@@ -27,11 +27,11 @@ export default function ClosingSection() {
         aria-hidden
         style={{
           position: 'absolute',
-          top: 0,
+          top: '-10%',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '130%',
-          maxWidth: 1800,
+          width: '160%',
+          maxWidth: 2200,
           pointerEvents: 'none',
         }}
       >
@@ -46,7 +46,7 @@ export default function ClosingSection() {
       <h2
         style={{
           fontSize: 'clamp(28px, 6vw, 80px)',
-          fontWeight: 500,
+          fontWeight: 700,
           letterSpacing: '-2px',
           lineHeight: 1.15,
           color: '#05050C',
