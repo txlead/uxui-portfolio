@@ -129,10 +129,11 @@ Error generating stack: `+e.message+`
   var menu = document.getElementById('chMobMenu');
   var close = document.getElementById('chMobClose');
   if (!btn || !menu) return;
-  function openMenu() { menu.classList.add('open'); btn.classList.add('active'); document.body.style.overflow='hidden'; }
-  function closeMenu() { menu.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow=''; }
+  function openMenu() { menu.classList.add('open'); btn.style.visibility='hidden'; document.body.style.overflow='hidden'; }
+  function closeMenu() { menu.classList.remove('open'); btn.style.visibility=''; document.body.style.overflow=''; }
   btn.addEventListener('click', openMenu);
   if (close) close.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow=''; }); });
 })();
 </script>
