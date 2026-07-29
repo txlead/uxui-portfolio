@@ -123,6 +123,19 @@ Error generating stack: `+e.message+`
 </div>
 
 <script>
+(function fixOverflow(){
+  function apply(){
+    document.documentElement.style.setProperty('overflow-x','visible','important');
+    document.documentElement.style.setProperty('overflow-y','auto','important');
+    document.body.style.setProperty('overflow-x','visible','important');
+    document.body.style.setProperty('overflow-y','auto','important');
+  }
+  apply();
+  window.addEventListener('load', apply);
+  setTimeout(apply, 300);
+  setTimeout(apply, 1000);
+})();
+
 (function(){
   var btn = document.getElementById('chBurger');
   var menu = document.getElementById('chMobMenu');
