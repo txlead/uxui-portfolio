@@ -63,7 +63,7 @@ Error generating stack: `+e.message+`
     background: none; border: none; cursor: pointer; padding: 6px;
   }
   .ch-lens .ch-burger span {
-    display: block; width: 22px; height: 1.5px;
+    display: block; width: 22px; height: 2px;
     background: rgba(0,0,0,0.7); border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
@@ -89,11 +89,7 @@ Error generating stack: `+e.message+`
   .ch-mob-menu.open a { transform: translateY(0); opacity: 1; }
   .ch-mob-menu.open a:nth-child(2) { transition-delay: 0.06s; }
   .ch-mob-menu.open a:nth-child(3) { transition-delay: 0.12s; }
-  .ch-mob-close {
-    position: fixed; top: 12px; right: 20px;
-    background: none; border: none; cursor: pointer; padding: 10px;
-    z-index: 100003;
-  }
+  .ch-mob-menu.open a:nth-child(4) { transition-delay: 0.18s; }
   @media (max-width: 700px) {
     .ch-lens { padding: 12px 24px; }
     .ch-lens .ch-logo img { width: 36px; height: 36px; }
@@ -111,9 +107,7 @@ Error generating stack: `+e.message+`
 </header>
 
 <div class="ch-mob-menu" id="chMobMenu">
-  <button class="ch-mob-close" id="chMobClose" aria-label="Close">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-  </button>
+  <a href="../../index.html">Home</a>
   <a href="../../about.html">About</a>
   <a href="../../index.html#contact">Contact</a>
   <a href="https://hurski.studio/" target="_blank" rel="noopener">Brand Portfolio</a>
@@ -123,10 +117,14 @@ Error generating stack: `+e.message+`
 (function(){
   var btn = document.getElementById('chBurger');
   var menu = document.getElementById('chMobMenu');
-  var close = document.getElementById('chMobClose');
   if (!btn || !menu) return;
-  btn.addEventListener('click', function(){ menu.classList.add('open'); btn.classList.add('active'); document.body.style.overflow='hidden'; });
-  close.addEventListener('click', function(){ menu.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow=''; });
+  btn.addEventListener('click', function(){
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow='';
+    } else {
+      menu.classList.add('open'); btn.classList.add('active'); document.body.style.overflow='hidden';
+    }
+  });
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow=''; }); });
 })();
 </script>
