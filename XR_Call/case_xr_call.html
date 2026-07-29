@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../symbol.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XR Call Control — Matthew Hurski</title>
+  <title>No-Touch Call Control — Matthew Hurski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -44,15 +44,26 @@
       align-items: center; justify-content: center;
       text-align: center; padding: 0 80px;
     }
-    .hero h1 { font-size: 44px; font-weight: 700; margin-bottom: 24px; }
-    .hero p { font-size: 17px; color: rgba(0,0,0,0.4); max-width: 580px; line-height: 1.6; }
+    .hero h1 {
+      font-size: 44px; font-weight: 700; margin-bottom: 24px;
+      background: linear-gradient(90deg, #0d0d0d 0%, #6c6c6c 30%, #0d0d0d 60%, #4a4a4a 80%, #0d0d0d 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .hero p { font-size: 17px; color: rgba(0,0,0,0.4); white-space: nowrap; line-height: 1.6; }
 
     /* ── Case intro ── */
     .case-intro {
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
       padding: 160px 80px 80px; max-width: 1400px; margin: 0 auto;
     }
-    .case-intro h2 { font-size: 64px; font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; }
+    .case-intro h2 { font-size: 44px; font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; white-space: nowrap; }
     .case-intro .body-text p { font-size: 15px; color: rgba(0,0,0,0.5); line-height: 1.65; }
 
     /* ── Case rows ── */
@@ -70,8 +81,12 @@
       max-width: 1400px; margin: 0 auto; padding: 0 80px 80px;
     }
     .video-section video {
-      width: 100%; border-radius: 20px;
+      width: 100%; border-radius: 24px;
       display: block; background: #000;
+    }
+    .video-caption {
+      margin-top: 48px; font-size: 15px;
+      color: rgba(0,0,0,0.4); line-height: 1.6;
     }
     @media (max-width: 700px) {
       .video-section { padding: 0 24px 48px; }
@@ -233,7 +248,7 @@
     .outro {
       min-height: 60vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      background: #f7f7f7; padding: 100px 80px;
+      background: #fff; padding: 100px 80px;
     }
     .outro-thanks { font-size: 48px; font-weight: 700; margin-bottom: 80px; margin-top: -40px; }
     .outro-next {
@@ -347,6 +362,8 @@
       .burger-btn.active span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
       .hero { padding: 0 24px; }
       .hero h1 { font-size: clamp(28px, 8vw, 44px); }
+      .hero p { white-space: normal; }
+      .case-intro h2 { white-space: normal; font-size: 32px; }
       .call-card { width: 240px; min-height: 340px; }
       .outro { padding: 60px 24px; }
       .outro-thanks { font-size: 36px; margin-bottom: 32px; }
@@ -380,21 +397,21 @@
 </header>
 
 <section class="hero">
-  <h1>XR Call Control</h1>
-  <p>Gesture-based call management for automotive HMI — accept or decline an incoming call without touching the screen.</p>
+  <h1>No-Touch Call Control</h1>
+  <p>XR-powered gesture recognition — accept or decline calls without touching the screen.</p>
 </section>
 
 <section class="case-intro">
-  <div><h2>HMI<br>Gesture<br>Interaction</h2></div>
+  <div><h2>HMI Gesture Interaction</h2></div>
   <div class="body-text">
-    <p>Designed and prototyped a gesture-driven interface for in-car displays. The system reads hand gestures in real time through a front-facing camera, letting drivers manage incoming calls without a single touch — keeping eyes on the road and hands on the wheel.</p>
+    <p>Designed and prototyped a gesture-driven interface for in-car displays. The system reads hand gestures in real time through a front-facing camera, letting drivers manage incoming calls without touching the screen — keeping visual attention on the road, not on a menu.</p>
   </div>
 </section>
 
 <div class="case-rows">
   <div class="case-row">
     <div class="case-row-label">The Problem</div>
-    <div class="case-row-body">Touchscreen interactions in moving vehicles require visual attention and fine motor precision — both of which take the driver's focus off the road. Even a 2-second glance increases crash risk dramatically.</div>
+    <div class="case-row-body">Touchscreen interactions in moving vehicles require visual attention and precise finger targeting — both of which take the driver's focus off the road. Even a 2-second glance increases crash risk dramatically. Voice commands aren't always reliable either — road noise and music often cause misrecognition, making them inconvenient in real driving conditions.</div>
   </div>
   <div class="case-row">
     <div class="case-row-label">The Insight</div>
@@ -402,7 +419,7 @@
   </div>
   <div class="case-row">
     <div class="case-row-label">The Solution</div>
-    <div class="case-row-body">A real-time gesture recognition layer built on MediaPipe hand tracking. 👍 answers the call. ✋ declines it. No buttons, no voice commands, no eyes off the road. A 1-second hold confirms the gesture to prevent accidental triggers.</div>
+    <div class="case-row-body">A real-time gesture recognition layer built on MediaPipe hand tracking. 👍 answers the call. ✋ declines it. No&nbsp;buttons, no&nbsp;voice commands, no&nbsp;eyes off the road. A 1-second hold confirms the gesture to prevent accidental triggers.</div>
   </div>
   <div class="case-row">
     <div class="case-row-label">The Tech</div>
@@ -465,11 +482,12 @@
   <video autoplay muted playsinline loop preload="auto">
     <source src="XR_auto_case.mp4" type="video/mp4">
   </video>
+  <p class="video-caption">Integrated into the heads-up display — the call appears where the driver is already looking, no extra glance required.</p>
 </section>
 
 <section class="outro">
   <p class="outro-thanks">Keep exploring.</p>
-  <a class="outro-next" href="../Google_case/case_google.html">
+  <a class="outro-next" href="../case_AI_Presence/case_ai_presence.html">
     <span>Next</span>
     <svg class="arr" viewBox="0 0 32 16" fill="none"><path d="M0 8H30M30 8L23 1M30 8L23 15" stroke="currentColor" stroke-width="1.5"/></svg>
   </a>
