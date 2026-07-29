@@ -93,6 +93,18 @@
       .video-section video { border-radius: 12px; }
     }
 
+    /* ── Testing block ── */
+    .testing-block { max-width: 1400px; margin: 0 auto; padding: 80px 80px 120px; }
+    .testing-block h3 { font-size: 15px; font-weight: 400; color: rgba(0,0,0,0.35); margin-bottom: 20px; }
+    .testing-block p { font-size: 15px; color: rgba(0,0,0,0.55); line-height: 1.65; max-width: 680px; margin-bottom: 48px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-2--testing img { width: 100%; height: 480px; object-fit: cover; object-position: top; border-radius: 16px; display: block; }
+    @media (max-width: 700px) {
+      .testing-block { padding: 48px 24px 80px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-2--testing img { height: 280px; }
+    }
+
     /* ── Prototype section ── */
     .proto-section { max-width: 1400px; margin: 0 auto; padding: 60px 80px 120px; }
     .proto-heading { font-size: 22px; font-weight: 700; color: #0d0d0d; margin-bottom: 12px; }
@@ -487,6 +499,15 @@
     <source src="XR_auto_case.mp4" type="video/mp4">
   </video>
   <p class="video-caption">Integrated into the heads-up display — the call appears where the driver is already looking, no extra glance required.</p>
+</section>
+
+<section class="block testing-block">
+  <h3>Behind the prototype</h3>
+  <p>Gestures were trained and tested using computer vision — a webcam tracked hand landmarks in real time via MediaPipe, letting me validate recognition accuracy and latency before any HUD integration. The setup was deliberately minimal: no specialized hardware, just a browser, a camera, and a lot of repeated hand movements.</p>
+  <div class="grid-2 grid-2--testing">
+    <img src="me1_testing.jpg" alt="Testing gesture recognition" loading="lazy">
+    <img src="me2_testing.jpg" alt="Testing gesture recognition" loading="lazy">
+  </div>
 </section>
 
 <section class="outro">
