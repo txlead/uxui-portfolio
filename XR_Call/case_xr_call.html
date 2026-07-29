@@ -224,6 +224,7 @@
       cursor: pointer; transition: opacity .2s;
     }
     .try-btn:hover { opacity: 0.75; }
+    .desktop-only-hint { display: none; font-size: 14px; color: rgba(0,0,0,0.35); }
 
     .gesture-live {
       display: none; flex-direction: column;
@@ -344,6 +345,9 @@
       .case-row { grid-template-columns: 1fr; gap: 12px; }
       .proto-section { padding: 40px 24px 80px; }
       .proto-box { flex-direction: column; padding: 28px 24px; gap: 32px; }
+      .try-btn { display: none; }
+      .gesture-hint { display: none; }
+      .desktop-only-hint { display: block; }
     }
     @media (max-width: 700px) {
       .case-header { padding: 12px 24px; }
@@ -471,6 +475,7 @@
   <div class="gesture-area">
     <p class="gesture-hint">👍 to answer &nbsp;·&nbsp; ✋ or 🖕 to decline</p>
     <button class="try-btn" id="tryBtn">Enable gesture control</button>
+    <p class="desktop-only-hint">Open on desktop to try gesture control</p>
     <div class="gesture-live" id="gestureLive">
       <div class="g-label" id="gestureLabel">Show your hand to the camera</div>
     </div>
