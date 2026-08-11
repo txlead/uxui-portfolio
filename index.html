@@ -281,7 +281,7 @@
     font-family: 'DM Sans', 'Inter', Helvetica, sans-serif;
     gap: 28px;
     position: relative;
-    overflow: hidden;
+    clip-path: inset(0 -100vw);
   }
 
   .work-link-row:last-child {
@@ -291,7 +291,8 @@
   .work-link-row::before {
     content: '';
     position: absolute;
-    inset: -1px 0;
+    top: -1px; bottom: -1px;
+    left: -100vw; right: -100vw;
     background: #0d0d0d;
     transform: translateY(105%);
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
