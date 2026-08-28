@@ -621,18 +621,16 @@
   });
 
   /* ── Scroll reveal: word-by-word ── */
-  var section  = document.querySelector('.about-section');
-  var sectionTop = section.offsetTop;           /* px from doc top */
-  var viewH      = window.innerHeight;
-  /* reveal begins when section enters view; spread over section height + half viewport */
-  var startAt  = Math.max(0, sectionTop - viewH * 0.8);
+  var section = document.querySelector('.about-section');
+  var viewH   = window.innerHeight;
 
   function reveal() {
-    var scrollY  = window.scrollY || window.pageYOffset;
-    var range    = section.offsetHeight * 0.55;
-    var progress = Math.max(0, Math.min(1, (scrollY - startAt) / range));
+    var scrollY    = window.scrollY || window.pageYOffset;
+    var sectionTop = section.getBoundingClientRect().top + scrollY;
+    var startAt    = Math.max(0, sectionTop - viewH * 0.1);
+    var range      = section.offsetHeight * 0.85;
+    var progress   = Math.max(0, Math.min(1, (scrollY - startAt) / range));
 
-    /* always keep at least the first word lit */
     var wordsToShow = Math.max(1, Math.round(progress * allWords.length));
 
     allWords.forEach(function (w, i) {
@@ -642,7 +640,11 @@
   }
 
   window.addEventListener('scroll', reveal, { passive: true });
-  reveal(); /* run once on load → shows only "Współpracowałem" */
+  if (document.readyState === 'complete') {
+    reveal();
+  } else {
+    window.addEventListener('load', reveal);
+  }
 })();
 </script>
 
