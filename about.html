@@ -104,6 +104,20 @@
   .header-li:hover { opacity: 0.4; }
 
   /* ── ABOUT TEXT ─────────────────────────────────── */
+  .about-video-section {
+    padding: 14vh 48px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .about-video-section video {
+    width: 72%;
+    max-width: 860px;
+    border-radius: 20px;
+    display: block;
+    outline: none;
+  }
+
   .about-section {
     padding: 22vh 48px 8vh;
     max-width: 1200px;
@@ -453,6 +467,10 @@
     .burger-btn.active span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
     .burger-btn.active span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
 
+    /* About video */
+    .about-video-section { padding: 10vh 20px 0; }
+    .about-video-section video { width: 100%; border-radius: 14px; }
+
     /* About text */
     .about-section { padding: 10vh 20px 6vh; }
     .about-text { font-size: clamp(24px, 6.5vw, 38px); }
@@ -511,6 +529,13 @@
 </header>
 
 <!-- About text -->
+<!-- About video -->
+<section class="about-video-section">
+  <video controls playsinline preload="metadata" poster="about_me_poster.jpg">
+    <source src="about_me_video.mp4" type="video/mp4">
+  </video>
+</section>
+
 <section class="about-section">
   <p class="about-text" id="about-text"></p>
 </section>
